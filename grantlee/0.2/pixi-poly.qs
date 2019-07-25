@@ -2,22 +2,36 @@ var exportModel = function(global) {
 	var bodies = global.bodies;
 
 	var exportedData = {
-		generator_info: "PixiJS polygon exporter. Visit https://github.com/eXponenta for more!"
+        generator_info: "PixiJS polygon exporter. Visit https://github.com/eXponenta for more!",
+        tag : "pixi_polygon_points",
+        format : {
+            decomposed : global.decompose,
+            flat : global.flatPoints,
+            body : global.useBody,
+            normalized : global.normalizePoints
+        }
 	};
 
 	for (var i = 0; i < bodies.length; i++) {
-		var body = bodies[i];
+        var body = bodies[i];
+        var options = {
+            size : body.size,
+            flat : global.flatPoints,
+            normalize : global.normalizePoints && global.useBody
+        }
+
 		var shapes = [];
 		for (var j = 0; j < body.fixtures.length; j++) {
 			var fixture = body.fixtures[j];
-			var shape = exportFixtureParams(fixture);
+            var shape = exportFixtureParams(fixture);
+            
 			if (fixture.isCircle) {
 				shape.circle = exportCircle(fixture);
 			} else {
 				if (global.decompose) {
-					shape.points = exportPolygons(fixture.polygons, global.flatPoints);
+					shape.points = exportPolygons(fixture.polygons, options);
 				} else {
-					shape.points = exportPolygons([fixture.hull], global.flatPoints);
+					shape.points = exportPolygons([fixture.hull], options);
 				}
 			}
 			shapes.push(shape);
@@ -29,7 +43,8 @@ var exportModel = function(global) {
 
 		if (global.useBody) {
 			exportedData[body.name] = {
-				label: body.label ? body.label : body.name,
+                label: body.label ? body.label : body.name,
+                source : options.size,
 				shapes: shapes
 			};
 		} else {
@@ -90,15 +105,22 @@ var exportCircle = function(circle) {
 	return result;
 };
 
-var exportPolygons = function(polygons, flatArray) {
+var exportPolygons = function(polygons, opts) {
 	var result = [];
 	for (var i = 0; i < polygons.length; i++) {
 		var resultPoly = [];
 		for (var j = 0; j < polygons[i].length; j++) {
-			if (flatArray) {
-				resultPoly.push(polygons[i][j].x, polygons[i][j].y);
+
+            var x = polygons[i][j].x;
+            var y = polygons[i][j].y;
+            if(opts.normalize) {
+                x /= opts.size.width;
+                y /= opts.size.height;
+            }
+			if (opts.flat) {
+				resultPoly.push( x , y);
 			} else {
-				resultPoly.push([polygons[i][j].x, polygons[i][j].y]);
+				resultPoly.push([x, y]);
 			}
 		}
 		result.push(resultPoly);
