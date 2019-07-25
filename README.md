@@ -10,8 +10,10 @@ Supports:
 * Exporting compressed or pretty JSON
 * Grouping fixtures hulls by labels or they IDs
 * Disableing body node. Export fixtures from all bodies into one list.
+* Export normalized points relative source size
+* Export fixture boundings
 
 
-### Importer for PIXIJS
+### Usage
 
-Coming soon...
+Demo (PIXIJS): https://www.pixiplayground.com/#/edit/gnzNV59uF29mzcItXEXOU
