@@ -46,6 +46,13 @@
             <type>bool</type>
             <default>true</default>
         </parameter>
+         <parameter>
+            <name>normalizePoints</name>
+            <displayName>Normalize coords</displayName>
+            <description>Normalize coords by source size. ONLY with 'Include body' options!</description>
+            <type>bool</type>
+            <default>false</default>
+        </parameter>
     </global>
 
     <body>
