@@ -1,0 +1,87 @@
+<exporter>
+    <name>pixi-poly</name>
+    <displayName>Pixi (Polygons)</displayName>
+    <description>Export to PIXI.JS for using as polygon in hitArea or Graphics, JSON format</description>
+    <version>1.0</version>
+    <yAxisDirection>down</yAxisDirection>
+    <physicsEngine>generic</physicsEngine>
+    <polygonOrientation>cw</polygonOrientation>
+    <template>pixi-poly.json</template>
+    <fileExtension>json</fileExtension>
+    <anchorPoint>
+        <enabled>no</enabled>
+    </anchorPoint>
+    <origin>
+        <type>fixed</type>
+        <relX>0.0</relX>
+        <relY>1.0</relY>
+    </origin>
+
+    <global>
+        <parameter>
+            <name>decompose</name>
+            <displayName>Decompose</displayName>
+            <description>Decompose to convex hull.</description>
+            <type>bool</type>
+            <default>true</default>
+        </parameter>
+        <parameter>
+            <name>flatPoints</name>
+            <displayName>Flat points</displayName>
+            <description>Export as points array [x,y, ... xN, yN] instead of [[x,y], ... , [xN, yN]].</description>
+            <type>bool</type>
+            <default>true</default>
+        </parameter>
+        <parameter>
+            <name>useBody</name>
+            <displayName>Include body</displayName>
+            <description>Include body subtree.</description>
+            <type>bool</type>
+            <default>false</default>
+        </parameter>
+         <parameter>
+            <name>prettyPrint</name>
+            <displayName>Pretty print</displayName>
+            <description>Export as pretty formated JSON.</description>
+            <type>bool</type>
+            <default>true</default>
+        </parameter>
+    </global>
+
+    <body>
+        <parameter>
+            <name>label</name>
+            <displayName>Body label</displayName>
+            <description>A string that can be used to identify the body.</description>
+            <type>string</type>
+            <default></default>
+        </parameter>
+        <parameter>
+            <name>concatFixtures</name>
+            <displayName>Group fixtures</displayName>
+            <description>Group fixtures by label or id of empty.</description>
+            <type>bool</type>
+            <default>false</default>
+        </parameter>
+    </body>
+
+
+    <fixture>
+        <!-- fixture physics settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <parameter>
+            <name>label</name>
+            <displayName>Shape label</displayName>
+            <description>A string that can be used to identify the shape.</description>
+            <type>string</type>
+            <default></default>
+        </parameter>
+        <parameter>
+            <name>id</name>
+            <displayName>Shape ID</displayName>
+            <description>Represents id of shape, can be use for groupings.</description>
+            <type>uint16</type>
+            <default>0</default>
+        </parameter>
+
+    </fixture>
+</exporter>
