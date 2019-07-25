@@ -2,7 +2,7 @@
     <name>pixi-poly</name>
     <displayName>Pixi (Polygons)</displayName>
     <description>Export to PIXI.JS for using as polygon in hitArea or Graphics, JSON format</description>
-    <version>1.0</version>
+    <version>1.4</version>
     <yAxisDirection>down</yAxisDirection>
     <physicsEngine>generic</physicsEngine>
     <polygonOrientation>cw</polygonOrientation>
@@ -49,7 +49,7 @@
          <parameter>
             <name>normalizePoints</name>
             <displayName>Normalize coords</displayName>
-            <description>Normalize coords by source size. ONLY with 'Include body' options!</description>
+            <description>Normalize coords by source size!</description>
             <type>bool</type>
             <default>false</default>
         </parameter>
