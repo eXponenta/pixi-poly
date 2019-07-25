@@ -15,7 +15,7 @@ var exportModel = function(global) {
 	for (var i = 0; i < bodies.length; i++) {
 		var body = bodies[i];
 		var options = {
-			size: body.size,
+			source: body.size,
 			flat: global.flatPoints,
 			normalize: global.normalizePoints
 		};
