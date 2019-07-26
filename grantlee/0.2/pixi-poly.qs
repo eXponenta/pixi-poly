@@ -5,7 +5,7 @@ var exportModel = function(global) {
 		generator_info: "PixiJS polygon exporter. Visit https://github.com/eXponenta for more!",
 		tag: "pixi_polygon_points",
 		format: {
-			decomposed: global.decompose,
+			reshaped: global.reshape,
 			flat: global.flatPoints,
 			body: global.useBody,
 			normalized: global.normalizePoints
@@ -29,7 +29,7 @@ var exportModel = function(global) {
 			if (fixture.isCircle) {
 				shape.circle = exportCircle(fixture);
 			} else {
-				if (global.decompose) {
+				if (global.reshape) {
 					shape.points = exportPolygons(fixture.polygons, options);
 				} else {
 					shape.points = exportPolygons([fixture.hull], options);
@@ -42,7 +42,7 @@ var exportModel = function(global) {
 
 		if (body.concatFixtures) {
 			shapes = concatFixtures(shapes, global.flatPoints);
-		}
+        }
 
 		if (global.useBody) {
 			exportedData[body.name] = {
@@ -140,7 +140,7 @@ var exportFixtureParams = function(fixture) {
 	var result = {
 		label: fixture.label,
 		id: fixture.id,
-		type: fixture.isCircle ? "circle" : "polygon"
+		type: fixture.type
 	};
 	return result;
 };

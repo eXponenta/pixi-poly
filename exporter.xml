@@ -2,7 +2,7 @@
     <name>pixi-poly</name>
     <displayName>Pixi (Polygons)</displayName>
     <description>Export to PIXI.JS for using as polygon in hitArea or Graphics, JSON format</description>
-    <version>1.4</version>
+    <version>1.5</version>
     <yAxisDirection>down</yAxisDirection>
     <physicsEngine>generic</physicsEngine>
     <polygonOrientation>cw</polygonOrientation>
@@ -19,9 +19,9 @@
 
     <global>
         <parameter>
-            <name>decompose</name>
-            <displayName>Decompose</displayName>
-            <description>Decompose to convex hull.</description>
+            <name>reshape</name>
+            <displayName>Reshape</displayName>
+            <description>Reshape to convex hulls.</description>
             <type>bool</type>
             <default>true</default>
         </parameter>
